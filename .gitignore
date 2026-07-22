@@ -1,0 +1,21 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments (for when you set up Flask)
+venv/
+.venv/
+env/
+.env
+
+# Database files
+*.db
+*.sqlite3
+
+# VS Code settings
+.vscode/
+
+# OS hidden files
+.DS_Store
+Thumbs.db
