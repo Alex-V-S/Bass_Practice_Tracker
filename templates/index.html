@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bass Practice Tracker</title>
+    <!-- NEW: Link to CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <header>
@@ -12,10 +14,25 @@
     
     <main>
         <section id="techniques-section">
-            <h2>My Repertoire & Techniques</h2>
-            <!-- We will use JavaScript to inject the database items here -->
+                    <section id="add-technique-section">
+            <h2>Add a New Technique</h2>
+            <form id="add-technique-form">
+                <input type="text" id="technique-name" placeholder="e.g., C Major Scale" required>
+                <select id="technique-category">
+                    <option value="Repertoire">Repertoire</option>
+                    <option value="Scale">Scale</option>
+                    <option value="Exercise">Exercise</option>
+                </select>
+                <button type="submit">Add to Tracker</button>
+            </form>
+        </section>
+        <section id="techniques-section">
+            <h2>My Reportoire & Techniques</h2>
             <ul id="techniques-list"></ul>
         </section>
     </main>
+    
+    <!-- NEW: Link to JavaScript -->
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>

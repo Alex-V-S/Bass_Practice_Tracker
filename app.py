@@ -1,6 +1,5 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 import sqlite3
-from flask import Flask, jsonify
 
 app = Flask(__name__)
 
@@ -25,6 +24,23 @@ def get_status():
         "status": "success",
         "message": "Bass Practice Tracker API is running!"
     })
+
+# Route to the database
+@app.route('/api/techniques', methods=['POST'])
+def add_technique():
+    # 1. Grab the JSON data sent from the browser
+    data = request.get_json()
+    name = data.get('name')
+    category = data.get('category')
+
+    # 2. Open the database and insert the new row
+    conn = get_db_connection()
+    conn.execute('INSERT INTO Techniques (name, category) VALUES (?, ?)', (name, category))
+    conn.commit()
+    conn.close()
+
+    # 3. Return a success response
+    return jsonify({"status": "success", "message": "Technique added!"}), 201
 
 # --- NEW: Your first real database endpoint! ---
 @app.route('/api/techniques', methods=['GET'])
