@@ -1,3 +1,4 @@
+from flask import Flask, jsonify, render_template
 import sqlite3
 from flask import Flask, jsonify
 
@@ -15,7 +16,7 @@ def get_db_connection():
 # The root endpoint (The front door)
 @app.route('/', methods=['GET'])
 def home():
-    return "Welcome to the Bass Practice Tracker!"
+    return render_template('index.html')
 
 # Your original status endpoint
 @app.route('/api/status', methods=['GET'])
